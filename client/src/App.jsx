@@ -8,7 +8,7 @@ import SessionResult from './components/SessionResult';
 import { useTypingSession } from './hooks/useTypingSession';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000/api';
-const defaultParagraph = `Typing with precision is a skill that combines rhythm, focus, and attention to punctuation. Practice daily, analyze your mistakes, and improve one micro-habit at a time.`;
+const defaultParagraph = `Typing with precision is a skill that combines rhythm focus, and attention to punctuation. Practice daily, analyze your mistakes, and improve one micro-habit at a time.`;
 
 export default function App() {
   const [sourceText, setSourceText] = useState(defaultParagraph);

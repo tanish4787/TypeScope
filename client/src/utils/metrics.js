@@ -1,22 +1,46 @@
-export function calculateLiveMetrics({ sourceText, typedText, durationMs, backspaceCount }) {
+export function calculateLiveMetrics({
+  sourceText,
+  typedText,
+  durationMs,
+  backspaceCount,
+}) {
   const durationMinutes = Math.max(durationMs / 60000, 1 / 60000);
-  const rawWpm = typedText.length / 5 / durationMinutes;
 
-  let errors = 0;
-  for (let i = 0; i < Math.max(sourceText.length, typedText.length); i += 1) {
-    if ((sourceText[i] || '') !== (typedText[i] || '')) errors += 1;
+  const totalTyped = typedText.length;
+
+  let correctChars = 0;
+  let incorrectChars = 0;
+
+  for (let i = 0; i < totalTyped; i++) {
+    const expected = sourceText[i] || "";
+    const actual = typedText[i];
+
+    if (actual === expected) {
+      correctChars += 1;
+    } else {
+      incorrectChars += 1;
+    }
   }
 
-  const netWpm = Math.max((typedText.length - errors) / 5 / durationMinutes, 0);
-  const accuracy = sourceText.length
-    ? Math.max(((sourceText.length - errors) / sourceText.length) * 100, 0)
+  const grossWpm = totalTyped / 5 / durationMinutes;
+
+ 
+  const netWpm = Math.max(
+    (correctChars - incorrectChars) / 5 / durationMinutes,
+    0
+  );
+
+  const accuracy = totalTyped
+    ? Math.max((correctChars / totalTyped) * 100, 0)
     : 0;
 
   return {
-    rawWpm: Number(rawWpm.toFixed(1)),
+    grossWpm: Number(grossWpm.toFixed(1)),
     netWpm: Number(netWpm.toFixed(1)),
     accuracy: Number(accuracy.toFixed(1)),
-    errors,
-    backspaceCount
+    correctChars,
+    incorrectChars,
+    backspaceCount,
+    totalTyped,
   };
 }
