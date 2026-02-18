@@ -1,0 +1,236 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #eef4ff;
+  background: radial-gradient(circle at 20% 20%, #1f3560 0%, #091325 46%, #050b17 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 3rem;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+}
+
+.brand, .tag {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.26);
+}
+
+.setup h2 {
+  margin-top: 0;
+}
+
+.source-input,
+.typing-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(8, 12, 22, 0.75);
+  color: #eff4ff;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.source-input {
+  min-height: 120px;
+}
+
+.typing-input {
+  min-height: 220px;
+}
+
+.meta {
+  margin-top: 0.55rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+.metrics-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.metric-card {
+  padding: 0.9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 27, 48, 0.7);
+  animation: riseIn 0.35s ease;
+}
+
+.metric-head {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 0.82rem;
+  opacity: 0.9;
+}
+
+.metric-card strong {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.panes {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.source-content {
+  margin: 0;
+  max-height: 300px;
+  overflow: auto;
+  line-height: 1.6;
+  padding-right: 0.25rem;
+}
+
+.source-content .correct {
+  color: #73f6ba;
+}
+
+.source-content .wrong {
+  color: #ff8c8c;
+  text-decoration: underline;
+}
+
+.source-content .pending {
+  color: #dce7ff;
+  opacity: 0.87;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+button {
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 11px;
+  padding: 0.65rem 0.95rem;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(130deg, #489cff, #605cff);
+  font-weight: 600;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button.ghost {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.report {
+  margin-top: 1rem;
+  border-radius: 16px;
+  padding: 1rem;
+  background: linear-gradient(140deg, rgba(106, 234, 255, 0.18), rgba(110, 109, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.report h3 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.report-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.report ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1rem;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 920px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panes,
+  .report-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+}
