@@ -25,7 +25,7 @@ export function useTypingSession(sourceText) {
   );
 
   const start = () => {
-    if (status === "active") return;
+    if (status === "active") return
 
     setStatus("active");
     setActiveDurationMs(0);
